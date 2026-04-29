@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKJ Neon Squad</title>
+
+<!-- FONT BARU -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#020202;
+  color:white;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 30%, #000000, transparent),
+    radial-gradient(circle at 80% 70%, #430c7533, transparent);
+  animation:moveBG 10s infinite alternate;
+}
+
+@keyframes moveBG{
+  0%{transform:translateY(-30px)}
+  100%{transform:translateY(30px)}
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+}
+
+/* LEFT */
+.left{
+  width:50%;
+  position:relative;
+}
+
+.left img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%) brightness(0.7);
+}
+
+.left::after{
+  content:"";
+  position:absolute;
+  width:20%;
+  height:100%;
+  background:linear-gradient(to right,#181717dd,transparent);
+}
+
+/* RIGHT */
+.right{
+  width:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:40px 60px;
+  gap:10px;
+}
+
+/* NAMA */
+.name{
+  font-family:'Orbitron',sans-serif;
+  font-size:48px;
+  font-weight:600;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px #00f7ff}
+  to{text-shadow:0 0 30px #00f7ff,0 0 60px #00f7ff}
+}
+
+/* SUB */
+.role{
+  font-size:20px;
+  font-weight:500;
+  color:#00f7ff;
+}
+
+/* LOKASI */
+.loc{
+  font-size:15px;
+  opacity:0.7;
+}
+
+/* DESC */
+.desc{
+  font-size:14px;
+  line-height:1.6;
+  max-width:90%;
+  max-height:90px;
+  overflow:hidden;
+}
+
+/* TYPING */
+.typing{
+  font-size:18px;
+  border-right:2px solid #ff0000;
+  padding-right:5px;
+}
+
+/* QUOTE */
+.quote{
+  font-size:12px;
+  opacity:0.5;
+  font-style:italic;
+}
+
+/* SPOTIFY */
+.spotify{
+  margin-top:5px;
+}
+
+/* SLIDER */
+.slider{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  width:130px;
+  height:170px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #00f7ff;
+}
+
+.card img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:2px solid #00f7ff;
+}
+
+.portfolio-btn{
+  margin-top:10px;
+  display:inline-block;
+  padding:8px 14px;
+  font-size:13px;
+  color:#00f7ff;
+  border:1px solid #00f7ff;
+  border-radius:8px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.portfolio-btn:hover{
+  background:#00f7ff;
+  color:black;
+  box-shadow:0 0 20px #00f7ff;
+}
+
+.info-box{
+  position:fixed;
+  top:150px;
+  right:20px;
+  width:245px;
+  height:450px;
+
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+
+  border-radius:5px;
+  box-shadow:0 0 20px #00f7ff33;
+
+  padding:15px;
+  color:white;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* TITLE */
+.info-box h3{
+  font-family:'Orbitron';
+  font-size:14px;
+  color:#00f7ff;
+  margin-bottom:10px;
+  text-shadow:0 0 3px #00f7ff;
+}
+
+/* SCROLL AREA */
+.info-content{
+  overflow-y:auto;
+  font-size:12px;
+  line-height:1.6;
+  padding-right:5px;
+}
+
+/* SCROLL BAR CUSTOM */
+.info-content::-webkit-scrollbar{
+  width:4px;
+}
+
+.info-content::-webkit-scrollbar-thumb{
+  background:#57c0c4;
+  border-radius:10px;
+}
+
+.social-icons{
+  position:fixed;
+  top:15px;
+  right:15px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* BASE ICON */
+.icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:white;
+  font-family:'Orbitron',sans-serif;
+  font-size:10px;
+
+  border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 0 10px #00f7ff33;
+  transition:0.3s;
+}
+
+/* UKURAN BERBEDA */
+.ig{
+  width:32px;
+  height:32px;
+  border:1px solid #ff2d75;
+  box-shadow:0 0 10px #ff2d75;
+}
+
+.sp{
+  width:42px;
+  height:42px;
+  border:1px solid #1ed760;
+  box-shadow:0 0 10px #1ed760;
+}
+
+.yt{
+  width:52px;
+  height:52px;
+  border:1px solid #ff0000;
+  box-shadow:0 0 10px #ff0000;
+}
+
+/* HOVER EFFECT */
+.icon:hover{
+  transform:scale(1.15);
+  filter:brightness(1.3);
+}
+
+.navbar-strip{
+  position:fixed;
+  top:10px;
+  left:10px;
+
+  width:86%;
+  height:6px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff33;
+
+  animation:pulseBar 2s infinite alternate;
+}
+
+/* animasi glow halus */
+@keyframes pulseBar{
+  from{
+    opacity:0.5;
+    box-shadow:0 0 10px #00f7ff;
+  }
+  to{
+    opacity:1;
+    box-shadow:0 0 20px #00f7ff,0 0 40px #00f7ff33;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+  <div class="left">
+    <img id="mainImg" src="images/rozikin.png">
+  </div>
+
+  <div class="navbar-strip"></div>
+
+  <div class="right">
+    <div class="name" id="mainName">MchyOzik</div>
+
+    <div class="typing" id="typingText"></div>
+
+    <div class="role" id="mainRole">Network & Cloud Specialist</div>
+
+    <div class="loc" id="mainAlamat">Blitar</div>
+
+    <div class="desc" id="mainDesc"></div>
+
+    <div class="spotify" id="spotifyBox"></div>
+
+    <div class="quote" id="quote"></div>
+
+    <a id="portfolioBtn" class="portfolio-btn" target="_blank">Lihat Portofolio</a>
+  </div>
+
+  <div class="info-box">
+  <h3>Info Squad</h3>
+  <div class="info-content">
+    <p>
+      TKJ Neon Squad adalah kelompok yang fokus pada networking, cloud computing, cybersecurity, dan development.
+      Kami belajar tentang server, routing, firewall, penetration testing, UI/UX, dan DevOps.
+      <br><br>
+      Tujuan kami adalah membangun skill IT modern yang siap industri 4.0.
+      Setiap anggota memiliki spesialisasi masing-masing dan terus berkembang di bidangnya.
+      <br><br>
+      Kami juga aktif dalam project web, sistem jaringan sekolah, dan eksperimen teknologi terbaru seperti automation dan AI tools.
+      <br><br>
+      "Keep learning, keep building, keep upgrading."
+    </p>
+  </div>
+</div>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="icon ig">IG</a>
+      <a href="https://spotify.com" target="_blank" class="icon sp">SP</a>
+      <a href="https://youtube.com" target="_blank" class="icon yt">YT</a>
+    </div>
+    
+
+  <div class="slider" id="slider"></div>
+</div>
+
+<script>
+const quotes=[
+"Push limitmu hari ini 🚀",
+"Error itu guru terbaik 😈",
+"Ngoding pelan gapapa, asal konsisten",
+"Skill itu dibangun, bukan ditunggu",
+"Stay hungry, stay learning 🔥"
+];
+
+quote.innerText=quotes[Math.floor(Math.random()*quotes.length)];
+
+const members=[
+{
+name:"MchyOzik",
+skills:["Networking","Cloud Computing"],
+role:"Network & Cloud Specialist",
+alamat:"Blitar",
+desc:"Ngoprek jaringan udah jadi kebiasaan...",
+img:"images/rozikin.png",
+spotify:true,
+portfolio:"https://mchyozik.github.io/Portofolio/index.html"
+},
+{
+name:"Sheng Cai'er",
+skills:["Cyber Security","Pentest"],
+role:"Security Analyst",
+alamat:"Malang",
+desc:"Lebih suka cari celah daripada cari alasan.",
+img:"images/cai'er.png",
+portfolio:"https://portfolio-caier.vercel.app"
+},
+{
+name:"Coky",
+skills:["Frontend","UI Design"],
+role:"UI/UX Designer",
+alamat:"Kediri",
+desc:"Desain bukan cuma bagus, tapi harus hidup.",
+img:"images/download (6).jpeg",
+portfolio:"https://portfolio-coky.vercel.app"
+},
+{
+name:"Alfira",
+skills:["Linux","Server"],
+role:"System Administrator",
+alamat:"Surabaya",
+desc:"Server harus hidup 24/7.",
+img:"images/download (7).jpeg",
+portfolio:"https://portfolio-alfira.vercel.app"
+},
+{
+name:"Amel",
+skills:["DevOps","Docker"],
+role:"DevOps Engineer",
+alamat:"Jombang",
+desc:"Automation adalah kunci.",
+img:"images/Genshin.jpeg",
+portfolio:"https://portfolio-amel.vercel.app"
+}
+];
+
+/* TYPING */
+let typingInterval;
+
+function startTypingLoop(words){
+  clearInterval(typingInterval);
+
+  let i=0,j=0,current="",isDeleting=false;
+
+  typingInterval=setInterval(()=>{
+    let word=words[i];
+
+    if(isDeleting){
+      current=word.substring(0,j--);
+    }else{
+      current=word.substring(0,j++);
+    }
+
+    typingText.innerText=current;
+
+    if(!isDeleting && j===word.length){
+      isDeleting=true;
+    }else if(isDeleting && j===0){
+      isDeleting=false;
+      i=(i+1)%words.length;
+    }
+
+  },120);
+}
+
+/* INIT */
+mainDesc.innerText=members[0].desc;
+mainRole.innerText=members[0].role;
+startTypingLoop(members[0].skills);
+
+/* SLIDER */
+members.forEach(m=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`<img src="${m.img}"><h4>${m.name}</h4>`;
+
+  card.onclick=()=>{
+    mainImg.src=m.img;
+    mainName.innerText=m.name;
+    mainAlamat.innerText=m.alamat;
+    mainDesc.innerText=m.desc;
+    mainRole.innerText=m.role;
+
+    startTypingLoop(m.skills);
+
+    if(m.spotify){
+      spotifyBox.innerHTML=`
+      <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/playlist/2u4JHzXCEsLu6DqmYGhhWV" 
+      width="100%" height="80"></iframe>`;
+    }else{
+      spotifyBox.innerHTML="";
+    }
+  };
+
+  slider.appendChild(card);
+});
+</script>
+
+</body>
+</html>
