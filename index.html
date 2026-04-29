@@ -345,7 +345,8 @@ body::before{
 
     <div class="quote" id="quote"></div>
 
-    <a id="portfolioBtn" class="portfolio-btn" target="_blank">Lihat Portofolio</a>
+    <a id="portfolioBtn" class="portfolio-btn" target="_blank" href="#">Lihat Portofolio</a>
+
   </div>
 
   <div class="info-box">
@@ -374,9 +375,14 @@ body::before{
   <div class="slider" id="slider"></div>
 </div>
 
+
+
 <script>
+
 const quotes=[
 "Push limitmu hari ini 🚀",
+"Error itu guru terbaik 😈",
+"Ngoding pelan gapapa, asal konsisten",
 "Skill itu dibangun, bukan ditunggu",
 "Stay hungry, stay learning 🔥"
 ];
@@ -386,10 +392,10 @@ quote.innerText=quotes[Math.floor(Math.random()*quotes.length)];
 const members=[
 {
 name:"MchyOzik",
-skills:["Networking Administrator","Networking Enginner","Cloud Computing"],
-role:"Network & Cloud Specialis",
-alamat:"My words",
-desc:"live without rules...😴",
+skills:["Networking","Cloud Computing"],
+role:"Network & Cloud Specialist",
+alamat:"Blitar",
+desc:"Ngoprek jaringan udah jadi kebiasaan...",
 img:"images/rozikin.png",
 spotify:true,
 portfolio:"https://mchyozik.github.io/Portofolio/index.html"
@@ -400,17 +406,17 @@ skills:["Cyber Security","Pentest"],
 role:"Security Analyst",
 alamat:"Malang",
 desc:"Lebih suka cari celah daripada cari alasan.",
-img:"images/圣采儿 (3).png,
+img:"images/cai'er.png",
 portfolio:"https://portfolio-caier.vercel.app"
 },
 {
-name:"Fuad",
+name:"Coky",
 skills:["Frontend","UI Design"],
 role:"UI/UX Designer",
 alamat:"Kediri",
 desc:"Desain bukan cuma bagus, tapi harus hidup.",
 img:"images/download (6).jpeg",
-portfolio:"https://portfolio-fuad.vercel.app"
+portfolio:"https://portfolio-coky.vercel.app"
 },
 {
 name:"Alfira",
@@ -461,9 +467,12 @@ function startTypingLoop(words){
   },120);
 }
 
+const portfolioBtn = document.getElementById("portfolioBtn");
+
 /* INIT */
 mainDesc.innerText=members[0].desc;
 mainRole.innerText=members[0].role;
+portfolioBtn.href = members[0].portfolio;
 startTypingLoop(members[0].skills);
 
 /* SLIDER */
@@ -478,6 +487,8 @@ members.forEach(m=>{
     mainAlamat.innerText=m.alamat;
     mainDesc.innerText=m.desc;
     mainRole.innerText=m.role;
+
+    portfolioBtn.href = m.portfolio;
 
     startTypingLoop(m.skills);
 
